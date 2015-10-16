@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style type="text/css">
+    #circle {
+      width: 100px;
+      height: 100px;
+      border: 2px solid black;
+      border-radius: 50px;
+      text-align: right;
+      line-height: 50px;
+    }
+    
+    #min_arrow {
+      width: 4px;
+      height: 30px;
+      background-color: black;
+      transform-origin: 0 100%;
+      position: relative;
+      left: 50px;
+      top: 20px;
+      transform: rotate(0deg);
+    }
+    
+    #sec_arrow {
+      width: 2px;
+      height: 50px;
+      background-color: black;
+      position: relative;
+      left: 50px;
+      bottom: 30px;
+      transform-origin: 0 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    var timer, start_time;
+
+    function start_timer() {
+      pause_timer();
+      start_time = new Date().getTime();
+      display_time(0);
+      timer = setInterval(
+        function() {
+          display_time( parseInt( (new Date().getTime() - start_time) /1000 ) ) ;
+        },
+        200
+      );
+    }
+    function display_time(time){
+      document.getElementById('timer').innerHTML = 'Время: ' + time + ' сек.';  
+      document.getElementById('sec_arrow').style.transform = "rotate(" + time * 6 + "deg)";
+      document.getElementById('min_arrow').style.transform = "rotate(" + time * 0.1 + "deg)";
+    }
+    function pause_timer() {
+		if (timer)
+			clearInterval(timer);
+    }
+  </script>
+  <input type="button" name="" value="start" onclick="start_timer()" />
+  <input type="button" name="" value="pause" onclick="pause_timer()" />
+  <div id="timer"></div>
+  <div id="circle">
+    <div id="min_arrow">
+    </div>
+    <div id="sec_arrow">
+    </div>
+  </div>
+ <h1>Git</h1>
+ <h1>new</h1>
+</body>
+
+</html>
